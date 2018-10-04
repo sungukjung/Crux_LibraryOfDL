@@ -3,7 +3,7 @@ import numpy as np
 
 #active functions
 def sigmoid(x):
-	return 1/(np.exp(x)+1)
+	return 1/(np.exp(-x)+1)
 
 def relu(x):
 	if x>0:return x
@@ -29,3 +29,7 @@ def cross_entropy_error_one_hot_encoding(y,t):
 	#you can ignore if it is one-hot-encoding, because answer t is 1, the other is 0.
 	#So u can pick only answer node and calculate.
 	return -np.sum(np.log(y[np.arange(batch_size),t]+1e-7))/batch_size
+
+def diff_sigmoid(x):
+	return sigmoid(x)-np.square(sigmoid(x))
+	
